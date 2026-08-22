@@ -365,7 +365,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          // TODO: hook up login logic
+
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF34C759),
@@ -417,7 +417,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         _SocialButton(
                           icon: Icons.apple,
                           onTap: () {
-                            // TODO: Apple sign-in
+                            //Apple sign-in
                           },
                         ),
                         const SizedBox(width: 16),
@@ -426,14 +426,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           // if you want the real multicolor "G" logo.
                           icon: Icons.g_mobiledata,
                           onTap: () {
-                            // TODO: Google sign-in
+                            //Google sign-in
                           },
                         ),
                         const SizedBox(width: 16),
                         _SocialButton(
                           icon: Icons.close, // stand-in for the X logo
                           onTap: () {
-                            // TODO: X sign-in
+                            //X sign-in
                           },
                         ),
                       ],
