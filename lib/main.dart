@@ -33,8 +33,9 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Future.delayed(const Duration(seconds: 15), () {
-      if (!mounted) return;
-
+      if (!mounted) {
+        return;
+      }
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -86,7 +87,6 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ),
           ),
-          // Logo (static, no blink animation)
           Center(
             child: Image.asset(
               'assets/images/logo.png',
@@ -158,8 +158,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               );
             },
           ),
-
-          // Dots + action area, dots always above the buttons/links
           _buildBottomOverlay(context),
         ],
       ),
@@ -251,7 +249,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        // Login button
         SizedBox(
           width: double.infinity,
           child: GestureDetector(
@@ -276,8 +273,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
         ),
         const SizedBox(height: 16),
-
-        // "Don't have an account? Sign up" text link (no box)
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -350,7 +345,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 left: 8,
                 child: GestureDetector(
                   onTap: () {
-                    // Always return to the first onboarding page (welcome.png)
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
@@ -373,7 +367,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-
               Center(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 40),
@@ -409,7 +402,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         const SizedBox(height: 10),
-
                         Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -441,14 +433,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                         const SizedBox(height: 28),
-
                         _AuthTextField(
                           controller: _emailController,
                           hintText: 'Email address',
                           icon: Icons.mail_outline,
                         ),
                         const SizedBox(height: 14),
-
                         _AuthTextField(
                           controller: _passwordController,
                           hintText: 'Password',
@@ -468,7 +458,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         const SizedBox(height: 22),
-
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
@@ -492,7 +481,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         const SizedBox(height: 24),
-
                         Row(
                           children: [
                             Expanded(
@@ -514,7 +502,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                         const SizedBox(height: 20),
-
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -710,7 +697,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         const SizedBox(height: 28),
 
-                        // Name field
                         _AuthTextField(
                           controller: _nameController,
                           hintText: 'Name',
@@ -718,7 +704,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         const SizedBox(height: 14),
 
-                        // Email field
                         _AuthTextField(
                           controller: _emailController,
                           hintText: 'Email address',
@@ -726,7 +711,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         const SizedBox(height: 14),
 
-                        // Password field
                         _AuthTextField(
                           controller: _passwordController,
                           hintText: 'Password',
@@ -813,7 +797,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 left: 8,
                 child: GestureDetector(
                   onTap: () {
-                    // Always return to the first onboarding page (welcome.png)
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
