@@ -176,8 +176,11 @@ class _ProductCard extends StatelessWidget {
                   else
                     IconButton(
                       onPressed: () {
-                        // TODO: hook up add-to-cart
-                      },
+                        CartService.instance.addToCart(product);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('${product.name} added to cart')),
+                          );
+                        },
                       icon: const Icon(Icons.add_circle, color: Color(0xFF34C759)),
                       padding: EdgeInsets.zero,
                       constraints: const BoxConstraints(),

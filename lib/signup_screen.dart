@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'welcome_screen.dart';
 import 'login_screen.dart';
-import 'home_page.dart';
+import 'main_nav_screen.dart';
 import 'auth_text_field.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -50,7 +50,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       if (!mounted) return;
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
+        MaterialPageRoute(builder: (context) => const MainNavScreen()),
             (route) => false,
       );
     } on FirebaseAuthException catch (e) {

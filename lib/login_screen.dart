@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'welcome_screen.dart';
 import 'signup_screen.dart';
 import 'reset_password_screen.dart';
-import 'home_page.dart';
+import 'main_nav_screen.dart';
 import 'auth_text_field.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (!mounted) return;
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
+        MaterialPageRoute(builder: (context) => const MainNavScreen()),
             (route) => false,
       );
     } on FirebaseAuthException catch (e) {

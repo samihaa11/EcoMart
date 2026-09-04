@@ -104,7 +104,7 @@ class ProductDetailScreen extends StatelessWidget {
                     Expanded(
                       child: OutlinedButton(
                         onPressed: () {
-                          // TODO: hook up add-to-cart
+                          CartService.instance.addToCart(product);
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(content: Text('Added to cart')),
                           );
@@ -121,7 +121,8 @@ class ProductDetailScreen extends StatelessWidget {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          // TODO: hook up purchase flow
+                          CartService.instance.addToCart(product);
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => const CartScreen()));
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF34C759),
