@@ -133,17 +133,28 @@ class _ProductCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Container(
+                    width: double.infinity,
                     color: const Color(0xFFE6F4EA),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Center(
-                    child: Icon(
-                      Icons.image_outlined,
-                      color: const Color(0xFF34C759).withValues(alpha: 0.6),
-                      size: 36,
+                    child: Image.network(
+                      product.imageUrl,
+                      fit: BoxFit.cover,
+                      loadingBuilder: (context, child, progress) {
+                        if (progress == null) return child;
+                        return const Center(
+                          child: SizedBox(
+                            width: 20, height: 20,
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          ),
+                        );
+                      },
+                      errorBuilder: (context, error, stack) => Icon(
+                        Icons.image_outlined,
+                        color: const Color(0xFF34C759).withValues(alpha: 0.6),
+                        size: 36,
+                      ),
                     ),
                   ),
                 ),

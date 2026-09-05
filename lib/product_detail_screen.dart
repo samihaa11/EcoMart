@@ -28,11 +28,13 @@ class ProductDetailScreen extends StatelessWidget {
               width: double.infinity,
               height: 260,
               color: const Color(0xFFE6F4EA),
-              child: Center(
-                child: Icon(
-                  Icons.image_outlined,
-                  color: const Color(0xFF34C759).withValues(alpha: 0.6),
-                  size: 72,
+              child: Image.network(
+                product.imageUrl,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: 260,
+                errorBuilder: (context, error, stack) => Center(
+                  child: Icon(Icons.image_outlined, color: const Color(0xFF34C759).withValues(alpha: 0.6), size: 72),
                 ),
               ),
             ),

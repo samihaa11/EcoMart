@@ -213,8 +213,15 @@ class _CartItemTile extends StatelessWidget {
               color: const Color(0xFFE6F4EA),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Center(
-              child: Icon(Icons.image_outlined, color: const Color(0xFF34C759).withValues(alpha: 0.6), size: 28),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.network(
+                item.product.imageUrl,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stack) => Center(
+                  child: Icon(Icons.image_outlined, color: const Color(0xFF34C759).withValues(alpha: 0.6), size: 28),
+                ),
+              ),
             ),
           ),
           const SizedBox(width: 12),
