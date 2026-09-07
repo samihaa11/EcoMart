@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import 'filter_sort_home.dart';
+import 'wishlist_screen.dart';
+import 'wishlist_service.dart';
 import 'cart.dart';
 import 'cart_screen.dart';
 
@@ -12,7 +14,8 @@ class NavPage {
 }
 
 final List<NavPage> navPages = [
-  const NavPage(label: 'Home', icon: Icons.home_rounded, screen: HomePage()),
+  const NavPage(label: 'Home', icon: Icons.home_rounded, screen: FilterSortHomePage()),
+  const NavPage(label: 'Wishlist', icon: Icons.favorite_rounded, screen: WishlistScreen()),
   const NavPage(label: 'Cart', icon: Icons.shopping_bag_rounded, screen: CartScreen()),
 ];
 
@@ -49,9 +52,10 @@ class _BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: CartService.instance,
+      animation: Listenable.merge([CartService.instance, WishlistService.instance]),
       builder: (context, _) {
         final cartCount = CartService.instance.itemCount;
+        final wishlistCount = WishlistService.instance.count;
 
         return SafeArea(
           child: Container(
@@ -68,7 +72,11 @@ class _BottomNavBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: List.generate(navPages.length, (index) {
                 final page = navPages[index];
-                final badgeCount = page.label == 'Cart' ? cartCount : 0;
+                final badgeCount = page.label == 'Cart'
+                    ? cartCount
+                    : page.label == 'Wishlist'
+                        ? wishlistCount
+                        : 0;
 
                 return _NavItem(
                   icon: page.icon,
