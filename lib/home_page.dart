@@ -4,11 +4,11 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext build) {
     return const Scaffold(
-      body: Center(
-        child: Text('Home', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-      ),
+        body: Center(
+         child: Text("Home page"),
+      )
     );
   }
 }
