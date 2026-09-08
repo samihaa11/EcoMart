@@ -1,9 +1,7 @@
-import 'dart:async';
-
-import 'package:ecomart/home_page.dart';
 import 'package:flutter/material.dart';
+import 'welcome_screen.dart';
 
-class SplashScreen extends StatefulWidget{
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
@@ -11,34 +9,70 @@ class SplashScreen extends StatefulWidget{
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  Timer? _timer;
-
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    _timer = Timer(Duration(seconds: 10), (){
-      Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage())
+
+    Future.delayed(const Duration(seconds: 10), () {
+      if (!mounted) return;
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const WelcomeScreen()),
       );
     });
   }
 
   @override
-  void dispose(){
-    super.dispose();
-
-    _timer?.cancel();
-  }
-  @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.green.shade300,
-        body: Center(
+      backgroundColor: Colors.black,
+      body: Stack(
+        children: [
+          Positioned(
+            top: -100,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: 330,
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  center: Alignment.topCenter,
+                  radius: 1.0,
+                  colors: [
+                    Colors.green.withValues(alpha: 0.65),
+                    Colors.transparent,
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: -100,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: 330,
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  center: Alignment.bottomCenter,
+                  radius: 1.0,
+                  colors: [
+                    Colors.green.withValues(alpha: 0.65),
+                    Colors.transparent,
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Center(
             child: Image.asset(
-                "assets/images/logo.png",
-                 width: 280,
-                 height: 280,
-            )
-        )
+              'assets/images/logo.png',
+              width: 270,
+              height: 270,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
