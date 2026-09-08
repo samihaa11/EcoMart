@@ -1,4 +1,3 @@
-
 import 'package:ecomart/splash_screen.dart';
 import 'package:flutter/material.dart';
 
