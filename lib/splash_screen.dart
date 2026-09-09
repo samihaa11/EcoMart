@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:ecomart/home_page.dart';
 import 'package:ecomart/welcome_page.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context){
     return Scaffold(
-        backgroundColor: Colors.green.shade300,
+        backgroundColor: Colors.green.shade50,
         body: Center(
             child: Image.asset(
               "assets/images/logo.png",

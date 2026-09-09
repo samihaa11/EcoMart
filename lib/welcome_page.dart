@@ -29,7 +29,7 @@ class WelcomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: 10,
               ),
               Text("Shop sustainably, save earth",
                 textAlign: TextAlign.center,
@@ -39,7 +39,7 @@ class WelcomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 90,
+                height: 75,
               ),
               Container(
                 height: MediaQuery
