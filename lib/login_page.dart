@@ -113,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               SizedBox(
-                height: 10,
+                height: 5,
               ),
 
               Row(
@@ -122,6 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                   Text('Don\'t have an account?',
                    style: TextStyle(
                   fontWeight: FontWeight.bold,
+                   fontSize: 15,
                 ),
               ),
                   TextButton(
@@ -135,6 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(
                       color: Colors.green.shade800,
                       fontWeight: FontWeight.bold,
+                      fontSize: 15,
                       ),
                     ),
                   ),
