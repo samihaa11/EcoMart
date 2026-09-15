@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:ecomart/welcome_page.dart';
+import 'package:ecomart/main_page.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget{
@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState(){
     super.initState();
     _timer = Timer(Duration(seconds: 10), (){
-      Navigator.push(context, MaterialPageRoute(builder: (context) => const WelcomePage())
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MainPage())
       );
     });
   }

@@ -1,12 +1,17 @@
+//import 'package:ecomart/main_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:ecomart/splash_screen.dart';
 import 'package:flutter/material.dart';
 
-void main(){
-  runApp(SplashScreenApp());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  runApp(const MyApp());
 }
 
-class SplashScreenApp extends StatelessWidget{
-  const SplashScreenApp({super.key});
+class MyApp extends StatelessWidget{
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context){
