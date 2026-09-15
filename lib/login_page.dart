@@ -1,6 +1,7 @@
 import 'package:ecomart/signup_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -128,10 +129,10 @@ class _LoginPageState extends State<LoginPage> {
                                      fontSize: 18,
                                  ),
                             ),
-                         ),
-                      ),
+                        ),
+                    ),
                   ),
-                  ),
+                ),
                 SizedBox(
                   height: 5,
                 ),

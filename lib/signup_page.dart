@@ -1,14 +1,32 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ecomart/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:ecomart/home_page.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
   @override
-  State<SignupPage> createState() => _State();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _State extends State<SignupPage> {
+class _SignupPageState extends State<SignupPage> {
+
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  Future signIn() async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+    );
+    Navigator.of(context).popUntil((route) => route.isFirst);
+  }
+
+  @override
+  void dispose(){
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -76,6 +94,7 @@ class _State extends State<SignupPage> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0),
                     child: TextField(
+                      controller: _emailController,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Email',
@@ -100,6 +119,7 @@ class _State extends State<SignupPage> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0),
                     child: TextField(
+                      controller: _passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
                         border: InputBorder.none,
@@ -114,19 +134,16 @@ class _State extends State<SignupPage> {
                 height: 10,
               ),
 
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: MaterialButton(
-                  minWidth: double.infinity,
-                  height: 60,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: GestureDetector(
+              onTap: signIn,
+              child: Container(
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
                   color: Colors.green.shade800,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => HomePage()));
-                  },
+                  borderRadius: BorderRadius.circular(12),
+                ),
                   child: Center(
                     child: Text(
                       'Sign-up',
@@ -139,6 +156,8 @@ class _State extends State<SignupPage> {
                   ),
                 ),
               ),
+          ),
+
               SizedBox(
                 height: 5,
               ),
