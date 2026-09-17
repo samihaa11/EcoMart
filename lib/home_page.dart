@@ -12,19 +12,25 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('Homepage'),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => FirebaseAuth.instance.signOut(),
-              child: const Text('Sign Out'),
-            ),
-          ],
-        ),
+      appBar: AppBar(
+        actions: [
+          ElevatedButton(
+          onPressed: () => FirebaseAuth.instance.signOut(),
+          child: const Text('Sign Out'),
+          ),
+        ]
       ),
+      body: GridView.count(
+        crossAxisCount: 2,
+        children: List.generate(20, (index) {
+          return Center(
+            child: Text(
+              'Item $index',
+              style: TextTheme.of(context).headlineSmall,
+            ),
+          );
+        }),
+      )
     );
   }
 }
