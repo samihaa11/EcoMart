@@ -20,7 +20,7 @@ void goToProfilePage(BuildContext context){
  Navigator.pop(context);
  Navigator.push(context, MaterialPageRoute(
      builder: (context) => const ProfilePage(),
- ),
+  ),
  );
 }
 
@@ -51,8 +51,15 @@ class _HomePageState extends State<HomePage> {
       ),
       body: GridView.count(
         crossAxisCount: 2,
-        children: List.generate(20, (index) {
+        children: List.generate(products.length, (index) {
           final product = products[index];
+          String stockText;
+          if(product.availability){
+            stockText = "In stock";
+          }
+          else{
+            stockText = "Out of stock";
+          }
           return GestureDetector(
             onTap: () {
               Navigator.push(
@@ -75,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Text(product.name),
                   Text('\$${product.price}'),
-                  Text('Quantity: ${product.quantity}'),
+                  Text(stockText),
                 ],
               ),
             ),

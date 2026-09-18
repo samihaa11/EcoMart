@@ -7,6 +7,15 @@ class Product{
   final double price;
   int quantity;
 
+  bool get availability{
+  if (quantity > 0) {
+    return true;
+  } 
+  else{
+    return false;
+  }
+}
+
   Product({
     required this.id,
     required this.name,
@@ -14,7 +23,7 @@ class Product{
     required this.category,
     required this.description,
     required this.price,
-    required this.quantity
+    required this.quantity,
   });
 }
 
@@ -56,7 +65,7 @@ List<Product> products = [
     category: 'Accessories',
     description: 'Durable, washable tote bag made from 100% organic cotton.',
     price: 6.49,
-    quantity: 60,
+    quantity: 0,
   ),
 
   Product(
@@ -96,7 +105,7 @@ List<Product> products = [
     category: 'Electronics',
     description: '10000mAh power bank with solar charging panel for outdoor use.',
     price: 24.99,
-    quantity: 20,
+    quantity: 0,
   ),
 
   Product(
@@ -116,7 +125,7 @@ List<Product> products = [
     category: 'Personal Care',
     description: 'Natural plant-based sponge, biodegradable and compostable.',
     price: 2.99,
-    quantity: 70,
+    quantity: 0,
   ),
 
   Product(
@@ -166,7 +175,7 @@ List<Product> products = [
     category: 'Kitchen',
     description: 'Insulated coffee cup made from recycled materials with a spill-proof lid.',
     price: 10.99,
-    quantity: 38,
+    quantity: 0,
   ),
 
   Product(

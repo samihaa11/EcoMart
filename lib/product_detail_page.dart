@@ -20,13 +20,23 @@ class ProductDetail extends StatelessWidget{
         backgroundColor: Colors.lightGreen,
         foregroundColor: Colors.white,
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Go back!'),
-        ),
+      body: Column(
+        children: [
+          const SizedBox(height: 30),
+          Center(
+            child: Image.network(
+              product.image,
+              height: 250,
+              width: 250
+            )
+          ),
+          Center(
+            child: Text(
+              product.name,
+              style: TextStyle(fontSize: 30)
+            )
+          ),
+        ]
       ),
     );
   }
