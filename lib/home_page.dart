@@ -28,6 +28,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.green[50],
       appBar: AppBar(
         title: Text(
           'Ecomart',
@@ -63,7 +64,6 @@ class _HomePageState extends State<HomePage> {
             },
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.green[50],
                 border: Border.all(color: Colors.black, width: 0.1),
               ),
               child: Column(

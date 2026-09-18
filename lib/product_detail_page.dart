@@ -8,6 +8,18 @@ class ProductDetail extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.green[50],
+      appBar: AppBar(
+        title: Text(
+          'Product Details',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.lightGreen,
+        foregroundColor: Colors.white,
+      ),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
