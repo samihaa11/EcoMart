@@ -74,7 +74,7 @@ class _ProfilePageState extends State<ProfilePage> {
               final userData = snapShot.data!.data() as Map<String,dynamic>;
                return ListView(
                 children: [
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 95),
                   Icon(
                     Icons.person,
                     size: 72,
