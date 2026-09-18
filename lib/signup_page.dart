@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ecomart/login_page.dart';
 import 'package:flutter/material.dart';
@@ -14,13 +15,31 @@ class _SignupPageState extends State<SignupPage> {
   final _passwordController = TextEditingController();
 
   Future signIn() async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: _emailController.text.trim(),
-      password: _passwordController.text.trim(),
-    );
-    Navigator.of(context).popUntil((route) => route.isFirst);
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+      FirebaseFirestore.instance
+      .collection("Users")
+      .doc(userCredential.user!.email)
+      .set({
+        'username' : _emailController.text.split('@')[0],
+        'Address'  : 'Empty address.. '
+      });
+      Navigator.of(context).popUntil((route) => route.isFirst);
+    } on FirebaseAuthException catch (e) {
+      displayMessage(e.code);
+    }
   }
-
+  void displayMessage(String message){
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(message),
+      ),
+    );
+  }
   @override
   void dispose(){
     _emailController.dispose();
