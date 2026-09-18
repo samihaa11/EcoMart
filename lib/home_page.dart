@@ -2,6 +2,7 @@ import 'package:ecomart/drawer.dart';
 import 'package:ecomart/profile_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import "package:ecomart/product.dart";
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -49,11 +50,18 @@ class _HomePageState extends State<HomePage> {
       body: GridView.count(
         crossAxisCount: 2,
         children: List.generate(20, (index) {
-          return Center(
-            child: Text(
-              'Item $index',
-              style: TextTheme.of(context).headlineSmall,
-            ),
+          final product = products[index];
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.network(
+                product.image,
+                height: 60,
+              ),
+              Text(product.name),
+              Text('\$${product.price}'),
+              Text('Quantity: ${product.quantity}'),
+            ],
           );
         }),
       ),
