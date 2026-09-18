@@ -1,3 +1,5 @@
+import 'package:ecomart/drawer.dart';
+import 'package:ecomart/profile_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -8,29 +10,42 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+void signOut(){
+  FirebaseAuth.instance.signOut();
+}
+
+void goToProfilePage(BuildContext context){
+ Navigator.pop(context);
+ Navigator.push(context, MaterialPageRoute(
+     builder: (context) => const ProfilePage(),
+ ),
+ );
+}
+
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          ElevatedButton(
-          onPressed: () => FirebaseAuth.instance.signOut(),
-          child: const Text('Sign Out'),
+          title: Text(
+              'Ecomart',
+               style: TextStyle(
+              color: Colors.white,
           ),
-        ]
       ),
-      body: GridView.count(
-        crossAxisCount: 2,
-        children: List.generate(20, (index) {
-          return Center(
-            child: Text(
-              'Item $index',
-              style: TextTheme.of(context).headlineSmall,
-            ),
-          );
-        }),
-      )
+        centerTitle: true,
+        backgroundColor: Colors.lightGreen,
+        foregroundColor: Colors.white,
+      actions: [
+        IconButton(onPressed: signOut,
+            icon: Icon(Icons.logout),
+        ),
+      ],
+     ),
+      drawer: MyDrawer(
+        onProfileTap: () => goToProfilePage(context),
+        onSignOut: signOut,
+      ),
     );
   }
 }
