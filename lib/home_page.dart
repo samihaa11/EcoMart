@@ -3,6 +3,7 @@ import 'package:ecomart/profile_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import "package:ecomart/product.dart";
+import "package:ecomart/product_detail_page.dart";
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -51,17 +52,33 @@ class _HomePageState extends State<HomePage> {
         crossAxisCount: 2,
         children: List.generate(20, (index) {
           final product = products[index];
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.network(
-                product.image,
-                height: 60,
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProductDetail(product: product),
+                ),
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.green[50],
+                border: Border.all(color: Colors.black, width: 0.1),
               ),
-              Text(product.name),
-              Text('\$${product.price}'),
-              Text('Quantity: ${product.quantity}'),
-            ],
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.network(
+                    product.image,
+                    height: 100,
+                  ),
+                  Text(product.name),
+                  Text('\$${product.price}'),
+                  Text('Quantity: ${product.quantity}'),
+                ],
+              ),
+            ),
           );
         }),
       ),

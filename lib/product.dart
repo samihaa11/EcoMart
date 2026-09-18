@@ -131,7 +131,7 @@ List<Product> products = [
 
   Product(
     id: 7699,
-    name: 'Glass Storage Jars (Set of 3)',
+    name: 'Glass Storage Jars',
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3813hurtLzfiwBs69V6zr29yZ6p-fFIBLOGpicr-tIw&s=10',
     category: 'Kitchen',
     description: 'Airtight glass jars with bamboo lids, ideal for pantry storage.',
@@ -191,7 +191,7 @@ List<Product> products = [
 
   Product(
     id: 9667,
-    name: 'Silicone Food Storage Bags',
+    name: 'Si Food Storage Bags',
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3813hurtLzfiwBs69V6zr29yZ6p-fFIBLOGpicr-tIw&s=10',
     category: 'Kitchen',
     description: 'Reusable, leak-proof silicone bags for storing food, dishwasher safe.',
@@ -211,7 +211,7 @@ List<Product> products = [
 
   Product(
     id: 10123,
-    name: 'Wool Dryer Balls (Set of 3)',
+    name: 'Wool Dryer Balls',
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3813hurtLzfiwBs69V6zr29yZ6p-fFIBLOGpicr-tIw&s=10',
     category: 'Household',
     description: 'Reusable wool balls that replace dryer sheets and reduce drying time.',
