@@ -1,4 +1,3 @@
-//import 'package:ecomart/main_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:ecomart/splash_screen.dart';
 import 'package:flutter/material.dart';
