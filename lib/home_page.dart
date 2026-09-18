@@ -27,24 +27,35 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(
-              'Ecomart',
-               style: TextStyle(
-              color: Colors.white,
+        title: Text(
+          'Ecomart',
+          style: TextStyle(
+            color: Colors.white,
           ),
-      ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.lightGreen,
         foregroundColor: Colors.white,
-      actions: [
-        IconButton(onPressed: signOut,
+        actions: [
+          IconButton(onPressed: signOut,
             icon: Icon(Icons.logout),
-        ),
-      ],
-     ),
+          ),
+        ],
+      ),
       drawer: MyDrawer(
         onProfileTap: () => goToProfilePage(context),
         onSignOut: signOut,
+      ),
+      body: GridView.count(
+        crossAxisCount: 2,
+        children: List.generate(20, (index) {
+          return Center(
+            child: Text(
+              'Item $index',
+              style: TextTheme.of(context).headlineSmall,
+            ),
+          );
+        }),
       ),
     );
   }
