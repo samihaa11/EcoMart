@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import "package:ecomart/product.dart";
+import 'package:ecomart/cart.dart';
 
 class ProductDetail extends StatelessWidget{
   const ProductDetail({super.key, required this.product});
@@ -51,6 +52,24 @@ class ProductDetail extends StatelessWidget{
               Text('ID: ${product.id}', style: TextStyle(fontSize: 20)),
               Text(stockText, style: TextStyle(fontSize: 20))
             ]
+          ),
+          const SizedBox(height:20),
+
+          ElevatedButton.icon(
+              onPressed: (){
+                cartItems.add({
+                  'name' : product.name,
+                  'price' : product.price,
+                });
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('${product.name} added to cart!'),
+                    duration: const Duration(seconds: 1),
+                  ),
+                );
+              }, icon: const Icon (Icons.shopping_cart),
+            label: const Text('Purchase'),
+
           ),
           const SizedBox(height: 30),
           Container(

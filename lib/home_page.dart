@@ -4,10 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import "package:ecomart/product.dart";
 import "package:ecomart/product_detail_page.dart";
-
+import 'package:ecomart/cart.dart';
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -25,6 +24,12 @@ void goToProfilePage(BuildContext context){
 }
 
 class _HomePageState extends State<HomePage> {
+  void goToCart(){
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => CartScreen()),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +45,10 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.lightGreen,
         foregroundColor: Colors.white,
         actions: [
+          IconButton(
+            onPressed: goToCart,
+            icon: const Icon(Icons.shopping_cart),
+          ),
           IconButton(onPressed: signOut,
             icon: Icon(Icons.logout),
           ),
