@@ -71,14 +71,17 @@ class _HomePageState extends State<HomePage> {
             },
             child: Container(
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.black, width: 0.1),
+                border: Border.all(color: Colors.black, width: 0.01),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.network(
-                    product.image,
-                    height: 100,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(5),
+                    child: Image.network(
+                      product.image,
+                      height: 100,
+                    ),
                   ),
                   Text(product.name),
                   Text('\$${product.price}'),
