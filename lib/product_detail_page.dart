@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import "package:ecomart/product.dart";
 import 'package:ecomart/cart.dart';
+import 'package:ecomart/about_us_page.dart';
 
 class ProductDetail extends StatelessWidget{
   const ProductDetail({super.key, required this.product});
@@ -89,6 +90,18 @@ class ProductDetail extends StatelessWidget{
                 )
               )
             )
+          ),
+          //I ADDED THIS FOR TESTING THE ABOUT US PAGE, REMOVE THIS BUTTON AND ALSO REMOVE THE about_us_page.dart IMPORT FROM THIS FILE
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (context) => const AboutUs(),
+                )
+              );
+            },
+            child: const Text('About Us'),
           )
         ]
       ),
