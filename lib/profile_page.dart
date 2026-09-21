@@ -1,13 +1,28 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecomart/home_page.dart';
 import 'package:ecomart/text_box.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:ecomart/drawer.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
+
+void signOut(){
+  FirebaseAuth.instance.signOut();
+}
+
+void goToHomePage(BuildContext context){
+  Navigator.pop(context);
+  Navigator.push(context, MaterialPageRoute(
+    builder: (context) => const HomePage(),
+  ),
+  );
+}
+
 class _ProfilePageState extends State<ProfilePage> {
   final currentUser = FirebaseAuth.instance.currentUser!;
   final usersCollection = FirebaseFirestore.instance.collection("Users");
@@ -64,7 +79,15 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         centerTitle: true,
         backgroundColor: Colors.lightGreen,
+        foregroundColor: Colors.white,
       ),
+        drawer: MyDrawer(
+          onHomeTap: () => goToHomePage(context),
+          onProfileTap: () {
+            Navigator.pop(context);
+          },
+          onSignOut: signOut,
+        ),
       body: StreamBuilder<DocumentSnapshot>(
           stream: FirebaseFirestore.instance
               .collection("Users")
@@ -91,7 +114,12 @@ class _ProfilePageState extends State<ProfilePage> {
 
                   Padding(
                     padding: const EdgeInsets.only(left: 25.0),
-                    child: Text('My details'),
+                    child: Text('My details',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
                   ),
                   MyTextBox(
                     text: userData['username'],

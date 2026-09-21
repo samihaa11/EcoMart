@@ -67,18 +67,17 @@ class AboutUs extends StatelessWidget {
             const Divider(height: 25, thickness: 1),
 
             const Text(
-              'Tanjil Amin Prantor',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            const Text('Coffee to Code Converter', style: TextStyle(color: Colors.grey)),
-            const Divider(height: 25, thickness: 1),
-
-
-            const Text(
               'Samiha Akter',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const Text('Layout Wizard', style: TextStyle(color: Colors.grey)),
+            const Divider(height: 25, thickness: 1),
+
+            const Text(
+              'Tanjil Amin Prantor',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            const Text('Coffee to Code Converter', style: TextStyle(color: Colors.grey)),
           ],
         ),
       ),

@@ -57,6 +57,9 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       drawer: MyDrawer(
+        onHomeTap: (){
+          Navigator.pop(context);
+        },
         onProfileTap: () => goToProfilePage(context),
         onSignOut: signOut,
       ),
