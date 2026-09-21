@@ -58,9 +58,6 @@ class _ProductDetailState extends State<ProductDetail> {
               Text(stockText, style: TextStyle(fontSize: 20))
             ]
           ),
-
-
-
           const SizedBox(height: 30),
           Container(
             height: 100,
@@ -81,7 +78,7 @@ class _ProductDetailState extends State<ProductDetail> {
             )
           ),
 
-          const SizedBox(height:20),
+          const SizedBox(height:30),
           ElevatedButton.icon(
             onPressed: widget.product.availability ? (){
               cartItems.add({

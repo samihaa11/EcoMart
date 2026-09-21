@@ -2,14 +2,17 @@ import 'package:ecomart/my_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:ecomart/about_us.dart';
 import 'package:ecomart/contact_us.dart';
+import 'package:ecomart/cart.dart';
 
 class MyDrawer extends StatelessWidget {
+  final void Function()? onHomeTap;
   final void Function()? onProfileTap;
   final void Function()? onSignOut;
   const MyDrawer({
     super.key,
     required this.onProfileTap,
-    required this.onSignOut
+    required this.onSignOut,
+    required this.onHomeTap,
   });
 
   @override
@@ -30,7 +33,7 @@ class MyDrawer extends StatelessWidget {
              MyListTile(
                icon: Icons.home,
                text: 'H O M E',
-               onTap: () => Navigator.pop(context),
+               onTap: onHomeTap,
              ),
              MyListTile(
                icon: Icons.person,
