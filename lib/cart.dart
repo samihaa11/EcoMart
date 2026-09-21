@@ -35,8 +35,27 @@ class _CartScreenState extends State<CartScreen>{
           final item = cartItems[index];
           return ListTile(
             leading: const Icon(Icons.shopping_bag, color: Colors.green),
+
             title: Text(item['name'] ?? 'No Name'),
+
             subtitle: Text('Price: \$${item['price'] ?? 0}'),
+
+            trailing: ElevatedButton.icon(
+              onPressed: () {
+                setState(() {
+                  cartItems.removeAt(index);
+                });
+              },
+              icon: Icon(Icons.delete, color: Colors.white),
+              label: Text(
+                  'Delete',
+                  style: TextStyle(fontSize: 12)
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.lightGreen,
+                foregroundColor: Colors.white,
+              ),
+            ),
           );
       },
       )

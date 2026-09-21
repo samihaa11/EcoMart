@@ -1,5 +1,7 @@
 import 'package:ecomart/my_list_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:ecomart/about_us.dart';
+import 'package:ecomart/contact_us.dart';
 
 class MyDrawer extends StatelessWidget {
   final void Function()? onProfileTap;
@@ -35,6 +37,22 @@ class MyDrawer extends StatelessWidget {
                text: 'P R O F I L E',
                onTap: onProfileTap,
              ),
+             MyListTile(
+               icon: Icons.info_outline,
+                 text: 'A B O U T  U S',
+                 onTap: () {
+                   Navigator.pop(context);
+                   Navigator.pushNamed(context, 'about');
+                 },
+             ),
+              MyListTile(
+                icon: Icons.contact_support_outlined,
+                text: 'C O N T A CＴ  U S',
+                onTap:() {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, 'contact');
+                },
+              ),
             ],
            ),
             Padding(

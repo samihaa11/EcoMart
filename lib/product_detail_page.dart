@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import "package:ecomart/product.dart";
 import 'package:ecomart/cart.dart';
-import 'package:ecomart/about_us_page.dart';
 
 class ProductDetail extends StatelessWidget{
   const ProductDetail({super.key, required this.product});
@@ -54,24 +53,9 @@ class ProductDetail extends StatelessWidget{
               Text(stockText, style: TextStyle(fontSize: 20))
             ]
           ),
-          const SizedBox(height:20),
 
-          ElevatedButton.icon(
-              onPressed: (){
-                cartItems.add({
-                  'name' : product.name,
-                  'price' : product.price,
-                });
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('${product.name} added to cart!'),
-                    duration: const Duration(seconds: 1),
-                  ),
-                );
-              }, icon: const Icon (Icons.shopping_cart),
-            label: const Text('Purchase'),
 
-          ),
+
           const SizedBox(height: 30),
           Container(
             height: 100,
@@ -91,18 +75,30 @@ class ProductDetail extends StatelessWidget{
               )
             )
           ),
-          //I ADDED THIS FOR TESTING THE ABOUT US PAGE, REMOVE THIS BUTTON AND ALSO REMOVE THE about_us_page.dart IMPORT FROM THIS FILE
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute<void>(
-                  builder: (context) => const AboutUs(),
-                )
+
+          const SizedBox(height:20),
+          ElevatedButton.icon(
+            onPressed: (){
+              cartItems.add({
+                'name' : product.name,
+                'price' : product.price,
+              });
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('${product.name} added to cart!'),
+                  duration: const Duration(seconds: 1),
+                ),
               );
             },
-            child: const Text('About Us'),
-          )
+            icon: const Icon (
+                Icons.shopping_cart,
+                color: Colors.green,
+            ),
+            label: const Text(
+                'Purchase',
+                style: TextStyle(color: Colors.black),
+            ),
+          ),
         ]
       ),
     );
