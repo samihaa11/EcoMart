@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 import "package:ecomart/product.dart";
 import 'package:ecomart/cart.dart';
 
-class ProductDetail extends StatelessWidget{
+class ProductDetail extends StatefulWidget {
   const ProductDetail({super.key, required this.product});
   final Product product;
 
   @override
+  State<ProductDetail> createState() => _ProductDetailState();
+}
+class _ProductDetailState extends State<ProductDetail> {
+  int quantity = 2;
+  @override
   Widget build(BuildContext context) {
     String stockText;
-    if(product.availability){
+    if(widget.product.availability){
       stockText = "In stock";
     }
     else{
@@ -34,22 +39,22 @@ class ProductDetail extends StatelessWidget{
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image.network(
-              product.image,
+              widget.product.image,
               height: 250,
               width: 250,
             )
           ),
           const SizedBox(height: 10),
           Text(
-            product.name,
+            widget.product.name,
             style: TextStyle(fontSize: 30)
           ),
           const SizedBox(height: 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text('Price: \$${product.price}', style: TextStyle(fontSize: 20)),
-              Text('ID: ${product.id}', style: TextStyle(fontSize: 20)),
+              Text('Price: \$${widget.product.price}', style: TextStyle(fontSize: 20)),
+              Text('ID: ${widget.product.id}', style: TextStyle(fontSize: 20)),
               Text(stockText, style: TextStyle(fontSize: 20))
             ]
           ),
@@ -68,7 +73,7 @@ class ProductDetail extends StatelessWidget{
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Text(
-                  product.description,
+                  widget.product.description,
                   style: TextStyle(fontSize: 15),
                   textAlign: TextAlign.center
                 )
@@ -78,26 +83,30 @@ class ProductDetail extends StatelessWidget{
 
           const SizedBox(height:20),
           ElevatedButton.icon(
-            onPressed: (){
+            onPressed: widget.product.availability ? (){
               cartItems.add({
-                'name' : product.name,
-                'price' : product.price,
+                'name' : widget.product.name,
+                'price' : widget.product.price,
               });
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text('${product.name} added to cart!'),
+                  content: Text('${widget.product.name} added to cart!'),
                   duration: const Duration(seconds: 1),
                 ),
               );
-            },
-            icon: const Icon (
+            }
+            :null,
+
+            icon: Icon (
                 Icons.shopping_cart,
                 color: Colors.green,
             ),
-            label: const Text(
-                'Purchase',
-                style: TextStyle(color: Colors.black),
+            label: Text(
+                widget.product.availability ?'Purchase' : 'Out of Stock',
+                style: TextStyle(
+                  color: widget.product.availability ? Colors.black : Colors.grey,
             ),
+          ),
           ),
         ]
       ),
