@@ -1,7 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:ecomart/drawer.dart';
+import 'package:ecomart/home_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ecomart/profile_page.dart';
 
 class AboutUs extends StatelessWidget {
   const AboutUs({super.key});
+  void signOut(){
+    FirebaseAuth.instance.signOut();
+  }
+
+  void goToProfilePage(BuildContext context){
+    Navigator.pop(context);
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context) => const ProfilePage(),
+    ),
+    );
+  }
+
+  void goToHomePage(BuildContext context){
+    Navigator.pop(context);
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context) => const HomePage(),
+    ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +39,13 @@ class AboutUs extends StatelessWidget {
         backgroundColor: Colors.lightGreen,
         foregroundColor: Colors.white,
       ),
+
+      drawer: MyDrawer(
+        onHomeTap: () => goToHomePage(context),
+        onProfileTap: () => goToProfilePage(context),
+        onSignOut: signOut,
+      ),
+
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: Column(
