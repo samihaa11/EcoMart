@@ -21,6 +21,18 @@ class ContactUs extends StatelessWidget{
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 20),
+            Center(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.asset(
+                  'assets/images/contact_us.jpg',
+                  height: 250,
+                  width: 250,
+                )
+              ),
+            ),
+            const SizedBox(height: 20),
             const Text(
               'Get in Touch',
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.green),

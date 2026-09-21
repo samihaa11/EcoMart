@@ -53,9 +53,6 @@ class ProductDetail extends StatelessWidget{
               Text(stockText, style: TextStyle(fontSize: 20))
             ]
           ),
-
-
-
           const SizedBox(height: 30),
           Container(
             height: 100,
@@ -76,7 +73,7 @@ class ProductDetail extends StatelessWidget{
             )
           ),
 
-          const SizedBox(height:20),
+          const SizedBox(height:30),
           ElevatedButton.icon(
             onPressed: (){
               cartItems.add({
