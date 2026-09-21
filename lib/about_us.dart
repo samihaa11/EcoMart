@@ -6,6 +6,7 @@ import 'package:ecomart/profile_page.dart';
 
 class AboutUs extends StatelessWidget {
   const AboutUs({super.key});
+
   void signOut(){
     FirebaseAuth.instance.signOut();
   }

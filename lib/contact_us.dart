@@ -1,8 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ecomart/profile_page.dart';
+import 'package:ecomart/home_page.dart';
+import 'package:ecomart/drawer.dart';
 
 class ContactUs extends StatelessWidget{
   const ContactUs({super.key});
 
+  void signOut(){
+    FirebaseAuth.instance.signOut();
+  }
+
+  void goToProfilePage(BuildContext context){
+    Navigator.pop(context);
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context) => const ProfilePage(),
+    ),
+    );
+  }
+
+  void goToHomePage(BuildContext context){
+    Navigator.pop(context);
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context) => const HomePage(),
+    ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,6 +39,13 @@ class ContactUs extends StatelessWidget{
         backgroundColor: Colors.lightGreen,
         foregroundColor: Colors.white,
       ),
+
+      drawer: MyDrawer(
+        onHomeTap: () => goToHomePage(context),
+        onProfileTap: () => goToProfilePage(context),
+        onSignOut: signOut,
+      ),
+
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
