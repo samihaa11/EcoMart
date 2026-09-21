@@ -7,8 +7,9 @@ import 'package:ecomart/profile_page.dart';
 class AboutUs extends StatelessWidget {
   const AboutUs({super.key});
 
-  void signOut(){
+  void signOut(BuildContext context) async{
     FirebaseAuth.instance.signOut();
+    Navigator.popUntil(context, (route) => route.isFirst);
   }
 
   void goToProfilePage(BuildContext context){
@@ -44,7 +45,7 @@ class AboutUs extends StatelessWidget {
       drawer: MyDrawer(
         onHomeTap: () => goToHomePage(context),
         onProfileTap: () => goToProfilePage(context),
-        onSignOut: signOut,
+        onSignOut: () => signOut(context),
       ),
 
       body: SingleChildScrollView(

@@ -1,8 +1,5 @@
 import 'package:ecomart/my_list_tile.dart';
 import 'package:flutter/material.dart';
-import 'package:ecomart/about_us.dart';
-import 'package:ecomart/contact_us.dart';
-import 'package:ecomart/cart.dart';
 
 class MyDrawer extends StatelessWidget {
   final void Function()? onHomeTap;

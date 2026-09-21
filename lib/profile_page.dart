@@ -11,8 +11,9 @@ class ProfilePage extends StatefulWidget {
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
-void signOut(){
+void signOut(BuildContext context) async{
   FirebaseAuth.instance.signOut();
+  Navigator.popUntil(context, (route) => route.isFirst);
 }
 
 void goToHomePage(BuildContext context){
@@ -86,7 +87,7 @@ class _ProfilePageState extends State<ProfilePage> {
           onProfileTap: () {
             Navigator.pop(context);
           },
-          onSignOut: signOut,
+          onSignOut: () => signOut(context),
         ),
       body: StreamBuilder<DocumentSnapshot>(
           stream: FirebaseFirestore.instance
